@@ -46,7 +46,6 @@ export default function OwnerHome() {
   };
 
   const onSubmitSearch = () => {
-    console.log(" click reset");
     setData((prevData) => {
       return prevData.filter((house) =>
         house.city.toLowerCase().includes(searchCity.toLowerCase())
@@ -107,7 +106,7 @@ export default function OwnerHome() {
             <tbody>
               {data.map((house) => (
                 <tr key={house.id}>
-                  <td scope="row">{house.id}</td>
+                  <td>{house.id}</td>
                   <td>{house.name || "N/A"}</td>
                   <td>{`${house.city}, ${house.state}` || "N/A"}</td>
                   {/* <td>{house.ownerId}</td> */}

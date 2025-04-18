@@ -1,4 +1,4 @@
-import { useLocation, Navigate, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getHousesById, updateHouseDetails } from "../firebase/firestore";
 
@@ -20,7 +20,7 @@ export default function EditHouseForm() {
 
   const handleChange = (e) => {
     setHouse((prev) => {
-      if(e.target.name == "wifi" || e.target.name === "laundry"){
+      if(e.target.name === "wifi" || e.target.name === "laundry"){
         return {...prev, [e.target.name] : e.target.checked}
       }else{
         return {...prev, [e.target.name] : e.target.value}

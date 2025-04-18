@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function HouseCard(props) {
 
     const navigate = useNavigate();
     const baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-    const [HouseData, setHouseData] = useState(props.data);
+    const HouseData = props.data;
 
     const onClickViewDetails = () => {
         navigate("/details", { state: { HouseData } });
@@ -18,7 +18,7 @@ export default function HouseCard(props) {
         <div className="card-body">
           <h5 className="card-title text-primary">{HouseData.name}</h5>
           <p className="card-text">{HouseData.city}, {HouseData.state}</p>
-          <a className="btn btn-primary" onClick={onClickViewDetails}>View Details</a>
+          <span className="btn btn-primary" onClick={onClickViewDetails}>View Details</span>
         </div>
       </div>
     </div>

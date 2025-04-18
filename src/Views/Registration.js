@@ -18,7 +18,7 @@ export default function Registration() {
     e.preventDefault();
     try{
       const user = await createUser(formDeatails);
-      const userAdd = await addUser({...formDeatails, uid: user.uid})
+      await addUser({...formDeatails, uid: user.uid})
       const data = await getUser(user.uid);
       if(data){
         navigate("/login");
@@ -122,7 +122,7 @@ export default function Registration() {
           </div>
           
           <button type="submit" className="btn btn-primary w-100">Registration</button>
-          <p className="pt-2 text-center">Already have an account? <a className="fw-bold btn-primary text-decoration-none" onClick={onLoginClick}>Login</a></p>
+          <p className="pt-2 text-center">Already have an account? <span className="fw-bold" onClick={onLoginClick}>Login</span></p>
         </form>
       </div>
     </div>

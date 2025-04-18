@@ -1,5 +1,4 @@
 import React, { useState, useEffect }  from 'react'
-import Navbar from '../componenets/Navbar'
 import './Home.css';
 import HouseCard from "../componenets/HouseCard";
 import { getHouses } from '../firebase/firestore.js';
@@ -7,7 +6,6 @@ import { getHouses } from '../firebase/firestore.js';
 export default function Home() {
 
   const [HousingData, setHousingData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [searchCity, setSearchCity] = useState("");
 
   useEffect(() => {  

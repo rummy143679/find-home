@@ -119,7 +119,7 @@ export default function Login({login}) {
           </div>
           
           <button type="submit" className="btn btn-primary w-100">Login</button>
-          <p className="pt-2 text-center">Don't have an account? <a className="fw-bold btn-primary text-decoration-none" onClick={onRegisterClick} >Register</a></p>
+          <p className="pt-2 text-center">Don't have an account? <span className="fw-bold" onClick={onRegisterClick} >Register</span></p>
         </form>
       </div>
     </div>

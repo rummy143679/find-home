@@ -17,7 +17,7 @@ export default function EditHouseForm() {
 
   const handleChange = (e) => {
     setHouse((prev) => {
-      if (e.target.name == "wifi" || e.target.name === "laundry") {
+      if (e.target.name === "wifi" || e.target.name === "laundry") {
         return { ...prev, [e.target.name]: e.target.checked };
       } else {
         return { ...prev, [e.target.name]: e.target.value };
@@ -41,12 +41,7 @@ export default function EditHouseForm() {
   const handleCancel = () => {
     navigate("/owner-home");
   };
-
-  const handleFileChange = (e) => {
-    setImageFile(e.target.files[0]);
-    console.log(imageFile);
-  };
-
+  
   return (
     <div className="row mt-1 d-flex align-items-center justify-content-center">
       <div className="col-6 card shadow p-2 login-card">
