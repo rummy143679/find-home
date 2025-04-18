@@ -9,14 +9,15 @@ export default function EditHouseForm() {
   const [house, setHouse] = useState(null);
 
   useEffect(() => {
-    fetchData();
+    const fetchData = async () => {
+      const house = await getHousesById(houseId);
+      console.log("useEffect", typeof house);
+      setHouse(house);
+    };
+  
+    if (houseId) fetchData();
   }, [houseId]);
-
-  const fetchData = async () => {
-    const house = await getHousesById(houseId);
-    console.log("useEffect",typeof house)
-    setHouse(house);
-  };
+  
 
   const handleChange = (e) => {
     setHouse((prev) => {

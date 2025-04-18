@@ -13,7 +13,6 @@ export default function EditHouseForm() {
     laundry: false,
     photo: "",
   });
-  const [imageFile, setImageFile] = useState(null);
 
   const handleChange = (e) => {
     setHouse((prev) => {
