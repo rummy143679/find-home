@@ -1,0 +1,46 @@
+/* Banner.css */
+
+.home-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+  }
+  
+
+  .home-heading-text{
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .home-text {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .home-text:first-of-type {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .home-text:last-of-type {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-success {
+    border: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+  }
+  

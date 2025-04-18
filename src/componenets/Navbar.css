@@ -1,0 +1,17 @@
+/* Navbar.css */
+.nav-link.active {
+    font-weight: bold;
+    color: #ffc107 !important;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+  }

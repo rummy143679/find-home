@@ -1,0 +1,58 @@
+:root {
+    --primary-color: #2E3A59;         /* Soft Navy Gray */
+    --secondary-color: #F46036;       /* Warm Orange */
+    --accent-color: #6FB1FC;          /* Sky Blue */
+    --text-dark: #1C1C1C;
+    --light-color: #F7F7F7;
+    --hover-dark: #1B263B;
+  }
+  
+  /* Bootstrap override examples */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--light-color);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--hover-dark);
+    border-color: var(--hover-dark);
+  }
+  
+  /* Secondary buttons */
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #d14420;
+    border-color: #d14420;
+  }
+  
+  /* Utility class for dark overlay (optional) */
+  .bg-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Text overrides */
+  .text-primary-custom {
+    color: var(--primary-color);
+  }
+  
+  .text-secondary-custom {
+    color: var(--secondary-color);
+  }
+  

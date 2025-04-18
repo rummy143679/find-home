@@ -1,0 +1,19 @@
+/* LoginForm.css */
+
+.registration-container {
+    height: 100vh;
+    background: linear-gradient(to right, #5D5FEF, #4e54c8);
+  }
+  
+  .registration-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  
+  .registration-card h3 {
+    color: #5D5FEF;
+    font-weight: 700;
+  }
+  
