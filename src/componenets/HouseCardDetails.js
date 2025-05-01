@@ -29,15 +29,15 @@ function HouseCardDetails() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await checkIsApplied();
-      data.map((doc) => {
-        if (doc.HouseLocationId == HouseData.id) {
+      data.foreach((doc) => {
+        if (doc.HouseLocationId === HouseData.id) {
           setIsApplied(true);
           setwithDrawData(doc);
         }
       });
     };
     fetchData();
-  }, [isApplied]);
+  }, [HouseData.id]);
 
   useEffect(() => {
     const fetchSaved = async () => {
@@ -46,7 +46,7 @@ function HouseCardDetails() {
       setIsSaved(saved);
     };
     fetchSaved()
-  }, [isSaved]);
+  }, [formDetails.HouseLocationId]);
 
   const isValidEmail = (email) => {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

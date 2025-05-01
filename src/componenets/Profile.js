@@ -25,7 +25,7 @@ function Profile() {
               //   src="https://via.placeholder.com/100"
               src="https://picsum.photos/50"
               className="rounded-circle border"
-              alt="Profile Photo"
+              alt="Profile"
               width="100"
               height="100"
             />

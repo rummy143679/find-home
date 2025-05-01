@@ -115,7 +115,7 @@ export default function Navbar() {
           id="profileDropDown"
           role="button"
           data-bs-toggle="dropdown"
-          aria-label="false"
+          // aria-label={"false"}
         />
         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropDown">
           <li>

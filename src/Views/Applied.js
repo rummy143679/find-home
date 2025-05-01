@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import HouseCard from "../componenets/HouseCard";
-import { AppliedData, getHouses, SavedData, saveRequest } from "../firebase/firestore.js";
+import { AppliedData } from "../firebase/firestore.js";
 
 export default function Applied() {
   const [HousingData, setHousingData] = useState([]);

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getHousesByOwnerId, getHousesByUserId } from "../firebase/firestore";
+import { getHousesByOwnerId } from "../firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firestore";
-import { useNavigate } from "react-router-dom";
 
 export default function OwnerHome() {
-  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);

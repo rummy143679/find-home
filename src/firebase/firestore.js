@@ -71,7 +71,7 @@ export const getHousesByOwnerId = async () => {
 // users
 
 export const addUser = async (user) => {
-  const result = await setDoc(doc(db, "Users", user.uid), {
+  await setDoc(doc(db, "Users", user.uid), {
     ...user,
     createdAt: new Date(),
   });
@@ -97,7 +97,6 @@ export const applyrequest = async (details) => {
 }
 
 export const withdrawApplication = async (details) => {
-  const user = auth.currentUser;
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -267,7 +266,6 @@ export const SavedData = async () => {
         unsubscribe();
         try {
           const collRef = collection(db, "SavedDetails");
-          const HouseCollRef = collection(db, "HousingLocations");
           const q = query(collRef, where("userId", "==", user.uid));
           const snap = await getDocs(q);
           const data = await Promise.all(
@@ -295,7 +293,6 @@ export const AppliedData = async () => {
         unsubscribe();
         try {
           const collRef = collection(db, "AppliedDetails");
-          const HouseCollRef = collection(db, "HousingLocations");
           const q = query(collRef, where("userId", "==", user.uid));
           const snap = await getDocs(q);
           const data = await Promise.all(
