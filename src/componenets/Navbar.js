@@ -17,27 +17,26 @@ export default function Navbar() {
   const userServices = [
     {
       option: "Applied",
-      path: "applied",
+      path: "/applied",
     },
     {
       option: "Saved",
-      path: "saved",
+      path: "/saved",
     },
   ];
 
-
   const handleLogOut = () => {
-    console.log("click logout")
+    console.log("click logout");
     sessionStorage.setItem("isLoggedIn", false);
     dispatch(setLoginStatus(false));
-  }
+  };
 
   const ownerOptions = ownerServices.map((opt, ind) => {
     return (
       <li key={ind}>
-        <a className="dropdown-item" href={opt.path}>
+        <NavLink className="dropdown-item" to={opt.path}>
           {opt.option}
-        </a>
+        </NavLink>
       </li>
     );
   });
@@ -45,9 +44,9 @@ export default function Navbar() {
   const userOptions = userServices.map((opt, ind) => {
     return (
       <li key={ind}>
-        <a className="dropdown-item" href={opt.path}>
+        <NavLink className="dropdown-item" to={opt.path}>
           {opt.option}
-        </a>
+        </NavLink>
       </li>
     );
   });
@@ -117,11 +116,14 @@ export default function Navbar() {
           data-bs-toggle="dropdown"
           // aria-label={"false"}
         />
-        <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropDown">
+        <ul
+          className="dropdown-menu dropdown-menu-end"
+          aria-labelledby="profileDropDown"
+        >
           <li>
-            <a className="dropdown-item" href="/profile">
+            <NavLink className="dropdown-item" to="/profile">
               Profile
-            </a>
+            </NavLink>
           </li>
           <li onClick={handleLogOut}>
             <span className="dropdown-item" onClick={handleLogOut}>
