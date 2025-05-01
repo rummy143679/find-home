@@ -2,8 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setLoginStatus } from "../store/modules/loginStore.js";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
   const ownerServices = [
     {
@@ -13,14 +16,21 @@ export default function Navbar() {
   ];
   const userServices = [
     {
-      option: "Requested",
-      path: "requested",
+      option: "Applied",
+      path: "applied",
     },
     {
       option: "Saved",
       path: "saved",
     },
   ];
+
+
+  const handleLogOut = () => {
+    console.log("click logout")
+    sessionStorage.setItem("isLoggedIn", false);
+    dispatch(setLoginStatus(false));
+  }
 
   const ownerOptions = ownerServices.map((opt, ind) => {
     return (
@@ -97,13 +107,28 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="profile">
+      <div className="profile dropdown">
         <img
-          className="profile-img"
+          className="profile-img dropdown-toggle"
           src="https://picsum.photos/50"
           alt="profile"
-          aria-hidden="true"
+          id="profileDropDown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-label="false"
         />
+        <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropDown">
+          <li>
+            <a className="dropdown-item" href="/profile">
+              Profile
+            </a>
+          </li>
+          <li onClick={handleLogOut}>
+            <span className="dropdown-item" onClick={handleLogOut}>
+              Logout
+            </span>
+          </li>
+        </ul>
       </div>
     </nav>
   );

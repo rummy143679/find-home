@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteHouseById, getHousesByUserId } from "../firebase/firestore";
+import { getHousesByOwnerId, getHousesByUserId } from "../firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,8 @@ export default function OwnerHome() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
-          const houses = await getHousesByUserId(user);
+          const houses = await getHousesByOwnerId();
+          console.log("houses", houses);
           setData(houses);
         } catch (e) {
           console.error(e);
@@ -32,21 +33,6 @@ export default function OwnerHome() {
 
   if (loading) return <div>Loading...</div>;
 
-  const onClickEdit = (id) => {
-    navigate(`/edit-house?houseId=${id}`);
-  };
-
-  const onClickDelete = (id) => {
-    const res = deleteHouseById(id);
-    if (res) {
-      // setData((prevData) => prevData.filter((house) => house.id !== id));
-      alert("House deleted successfully.");
-      setSearchCity("");
-    } else {
-      alert("Failed to delete the house.");
-    }
-  };
-
   const onSubmitReset = () => {
     setSearchCity("");
   };
@@ -59,24 +45,16 @@ export default function OwnerHome() {
     });
   };
 
-  const handleCreate = () => {
-    navigate("/upload-house");
-  };
-
   return (
     <>
       {data.length === 0 ? (
         <div className="d-flex flex-column justify-content-center align-items-center">
-          <h1>Your Houses</h1>
-          <p>No houses found.</p>
-          <button className="btn btn-success" onClick={handleCreate}>
-            Create
-          </button>
+          <h1>Your Requests</h1>
+          <p>No requests found.</p>
         </div>
       ) : (
         <div className="m-2">
           <div className="row mb-1 align-items-center">
-            {/* Left side: search input + buttons */}
             <div className="col-md-4 d-flex gap-2">
               <input
                 type="text"
@@ -95,40 +73,23 @@ export default function OwnerHome() {
                 </button>
               )}
             </div>
-
-            <div className="col-md-8 d-flex justify-content-end">
-              <button className="btn btn-success" onClick={handleCreate}>
-                Create
-              </button>
-            </div>
           </div>
           <table className="table table-responsive table-hover table-bordered text-center">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">House Name</th>
-                <th scope="col">Location</th>
-                {/* <th scope="col">Owner ID</th> */}
-                <th scope="col">Actions</th>
+                <th scope="col">HouseLocationId</th>
+                <th scope="col">email</th>
+                <th scope="col">firstName</th>
+                <th scope="col">lastName</th>
               </tr>
             </thead>
             <tbody>
               {data.map((house) => (
-                <tr key={house.id}>
-                  <td>{house.id}</td>
-                  <td>{house.name || "N/A"}</td>
-                  <td>{`${house.city}, ${house.state}` || "N/A"}</td>
-                  {/* <td>{house.ownerId}</td> */}
-                  <td className="d-flex justify-content-center">
-                    <i
-                      className="bi bi-pencil me-4"
-                      onClick={() => onClickEdit(house.id)}
-                    ></i>
-                    <i
-                      className="bi bi-trash"
-                      onClick={() => onClickDelete(house.id)}
-                    ></i>
-                  </td>
+                <tr key={house.applicationId}>
+                  <td>{house.HouseLocationId}</td>
+                  <td>{house.email || "N/A"}</td>
+                  <td>{house.firstName || "N/A"}</td>
+                  <td>{house.lastName || "N/A"}</td>
                 </tr>
               ))}
             </tbody>

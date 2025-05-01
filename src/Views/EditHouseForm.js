@@ -11,7 +11,6 @@ export default function EditHouseForm() {
   useEffect(() => {
     const fetchData = async () => {
       const house = await getHousesById(houseId);
-      console.log("useEffect", typeof house);
       setHouse(house);
     };
   

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import HouseCard from "../componenets/HouseCard";
-import { getHouses } from "../firebase/firestore.js";
+import { AppliedData, getHouses, SavedData, saveRequest } from "../firebase/firestore.js";
 
-export default function Home() {
+export default function Applied() {
   const [HousingData, setHousingData] = useState([]);
   const [searchCity, setSearchCity] = useState("");
 
@@ -13,7 +13,7 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const data = await getHouses();
+      const data = await AppliedData();
       setHousingData(data);
     } catch (error) {
       console.error(error);
@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   const HouseCards = HousingData.map((house) => {
-    return <HouseCard key={house.id} data={house} isSaved={false} />;
+    return <HouseCard key={house.id} data={house} isApplied={true} />;
   });
 
   return (
@@ -72,13 +72,10 @@ export default function Home() {
           HouseCards
         ) : (
           <h4 className="text-center align-items-center">
-            No records to display
+            No Applied records to display
           </h4>
         )}
       </div>
-      {/* <footer className="bg-primary text-white text-center py-3 mt-5">
-        <p>&copy; 2023 HomeFinder. All rights reserved.</p>
-      </footer> */}
     </>
   );
 }

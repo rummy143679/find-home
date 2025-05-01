@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import HouseCard from "../componenets/HouseCard";
-import { getHouses } from "../firebase/firestore.js";
+import { RemoveSavedData, SavedData } from "../firebase/firestore.js";
 
-export default function Home() {
+export default function Saved() {
   const [HousingData, setHousingData] = useState([]);
   const [searchCity, setSearchCity] = useState("");
 
@@ -13,7 +13,7 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const data = await getHouses();
+      const data = await SavedData();
       setHousingData(data);
     } catch (error) {
       console.error(error);
@@ -35,8 +35,30 @@ export default function Home() {
     fetchData();
   };
 
+  const removeSaved = (houseId) => {
+    console.log("removeSaved", houseId);
+    RemoveSavedData(houseId)
+      .then((res) => {
+        if (res) {
+          alert("Removed from saved data successfully");
+        }
+        fetchData();
+      })
+      .catch((err) => {
+        alert("Error removing from saved data");
+        console.error("Error removing from saved data", err);
+      });
+  };
+
   const HouseCards = HousingData.map((house) => {
-    return <HouseCard key={house.id} data={house} isSaved={false} />;
+    return (
+      <HouseCard
+        key={house.id}
+        data={house}
+        isSaved={true}
+        removed={removeSaved}
+      />
+    );
   });
 
   return (
@@ -72,13 +94,10 @@ export default function Home() {
           HouseCards
         ) : (
           <h4 className="text-center align-items-center">
-            No records to display
+            No saved records to display
           </h4>
         )}
       </div>
-      {/* <footer className="bg-primary text-white text-center py-3 mt-5">
-        <p>&copy; 2023 HomeFinder. All rights reserved.</p>
-      </footer> */}
     </>
   );
 }
